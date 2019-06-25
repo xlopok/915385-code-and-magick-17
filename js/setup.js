@@ -37,7 +37,7 @@ var coatColorArray = [
   'rgb(0, 0, 0)'
 ];
 
-var eyesColoArray = [
+var eyesColorArray = [
   'black',
   'red',
   'blue',
@@ -54,22 +54,22 @@ var wizards = [
   {
     name: getRandomArrayElement(namesArray) + ' ' + getRandomArrayElement(lastnamesArray),
     coatColor: getRandomArrayElement(coatColorArray),
-    eyesColor: getRandomArrayElement(eyesColoArray)
+    eyesColor: getRandomArrayElement(eyesColorArray)
   },
   {
     name: getRandomArrayElement(namesArray) + ' ' + getRandomArrayElement(lastnamesArray),
     coatColor: getRandomArrayElement(coatColorArray),
-    eyesColor: getRandomArrayElement(eyesColoArray)
+    eyesColor: getRandomArrayElement(eyesColorArray)
   },
   {
     name: getRandomArrayElement(namesArray) + ' ' + getRandomArrayElement(lastnamesArray),
     coatColor: getRandomArrayElement(coatColorArray),
-    eyesColor: getRandomArrayElement(eyesColoArray)
+    eyesColor: getRandomArrayElement(eyesColorArray)
   },
   {
     name: getRandomArrayElement(namesArray) + ' ' + getRandomArrayElement(lastnamesArray),
     coatColor: getRandomArrayElement(coatColorArray),
-    eyesColor: getRandomArrayElement(eyesColoArray)
+    eyesColor: getRandomArrayElement(eyesColorArray)
   }
 ];
 
