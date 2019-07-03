@@ -106,8 +106,6 @@ for (var i = 0; i < wizards.length; i++) {
 }
 similarListElement.appendChild(fragment);
 
-// console.log(wizards);
-
 // 5. Покажите блок .setup-similar, удалив у него CSS-класс hidden.
 document.querySelector('.setup-similar').classList.remove('hidden');
 
@@ -120,10 +118,11 @@ var setupOpen = document.querySelector('.setup-open');
 // var setup = document.querySelector('.setup');
 var setupClose = document.querySelector('.setup-close');
 // var setupUserName = setup.querySelector('.setup-user-name');
+var inputUsername = document.querySelector('.setup-user-name');
 
 
 var onPopupEscPress = function (evt) {
-  if (evt.keyCode === ESC_KEYCODE) {
+  if (evt.keyCode === ESC_KEYCODE && inputUsername !== document.activeElement) {
     closePopup();
   }
 };
@@ -159,9 +158,6 @@ setupClose.addEventListener('keydown', function (evt) {
   }
 });
 
-// setupUserName.addEventListener('focus', function() {
-//   openPopup();
-// });
 
 // Изменение цвета мантии персонажа по нажатию
 
