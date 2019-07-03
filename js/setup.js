@@ -1,8 +1,8 @@
 'use strict';
 
 // 1. Покажите блок .setup, убрав в JS-коде у него класс .hidden.
-var setupDiv = document.querySelector('.setup');
-setupDiv.classList.remove('hidden');
+var setup = document.querySelector('.setup');
+// setup.classList.remove('hidden');
 
 // 2. Создайте массив, состоящий из 4 сгенерированных JS объектов, которые будут описывать похожих персонажей.
 
@@ -43,6 +43,13 @@ var eyesColorArray = [
   'blue',
   'yellow',
   'green'
+];
+
+var fireballArray = [
+  '#ee4830',
+  '#30a8ee',
+  '#5ce6c0',
+  '#e848d5'
 ];
 
 var getRandomArrayElement = function (myArray) {
@@ -91,7 +98,7 @@ var renderWizard = function (wizard) {
 
 // 4. Отрисуйте сгенерированные DOM-элементы в блок .setup-similar-list. Для вставки элементов используйте DocumentFragment.
 
-var similarListElement = setupDiv.querySelector('.setup-similar-list');
+var similarListElement = setup.querySelector('.setup-similar-list');
 
 var fragment = document.createDocumentFragment();
 for (var i = 0; i < wizards.length; i++) {
@@ -99,7 +106,86 @@ for (var i = 0; i < wizards.length; i++) {
 }
 similarListElement.appendChild(fragment);
 
-// console.log(wizards);
-
 // 5. Покажите блок .setup-similar, удалив у него CSS-класс hidden.
 document.querySelector('.setup-similar').classList.remove('hidden');
+
+// module4-task1
+
+// Открытие/закрытие окна настройки персонажа
+var ESC_KEYCODE = 27;
+var ENTER_KEYCODE = 13;
+var setupOpen = document.querySelector('.setup-open');
+// var setup = document.querySelector('.setup');
+var setupClose = document.querySelector('.setup-close');
+// var setupUserName = setup.querySelector('.setup-user-name');
+var inputUsername = document.querySelector('.setup-user-name');
+
+
+var onPopupEscPress = function (evt) {
+  if (evt.keyCode === ESC_KEYCODE && inputUsername !== document.activeElement) {
+    closePopup();
+  }
+};
+
+var openPopup = function () {
+  setup.classList.remove('hidden');
+
+  document.addEventListener('keydown', onPopupEscPress);
+};
+
+var closePopup = function () {
+  setup.classList.add('hidden');
+  document.removeEventListener('keydown', onPopupEscPress);
+};
+
+setupOpen.addEventListener('click', function () {
+  openPopup();
+});
+
+setupOpen.addEventListener('keydown', function (evt) {
+  if (evt.keyCode === ENTER_KEYCODE) {
+    openPopup();
+  }
+});
+
+setupClose.addEventListener('click', function () {
+  closePopup();
+});
+
+setupClose.addEventListener('keydown', function (evt) {
+  if (evt.keyCode === ENTER_KEYCODE) {
+    closePopup();
+  }
+});
+
+
+// Изменение цвета мантии персонажа по нажатию
+
+var setupWizard = document.querySelector('.setup-wizard');
+var wizardCoat = setupWizard.querySelector('.wizard-coat');
+var wizardEyes = setupWizard.querySelector('.wizard-eyes');
+var wizardFireball = document.querySelector('.setup-fireball-wrap');
+
+var inputCoat = setup.querySelector('input[name="coat-color"]');
+var inputEyes = setup.querySelector('input[name="eyes-color"]');
+var inputFireball = setup.querySelector('input[name="fireball-color"]');
+
+wizardCoat.addEventListener('click', function () {
+  var randomColor = getRandomArrayElement(coatColorArray);
+  wizardCoat.style.fill = randomColor;
+  inputCoat.value = randomColor;
+});
+
+wizardEyes.addEventListener('click', function () {
+  var randomColor = getRandomArrayElement(eyesColorArray);
+  wizardEyes.style.fill = randomColor;
+  inputEyes.value = randomColor;
+});
+
+wizardFireball.addEventListener('click', function () {
+  var randomColor = getRandomArrayElement(fireballArray);
+  wizardFireball.style.backgroundColor = randomColor;
+  inputFireball.value = randomColor;
+});
+
+
