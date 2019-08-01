@@ -7,28 +7,6 @@
 
   // 2. Создайте массив, состоящий из 4 сгенерированных JS объектов, которые будут описывать похожих персонажей.
 
-  var namesArray = [
-    'Иван',
-    'Хуан Себастьян',
-    'Мария',
-    'Кристоф',
-    'Виктор',
-    'Юлия',
-    'Люпита',
-    'Вашингтон'
-  ];
-
-  var lastnamesArray = [
-    'да Марья',
-    'Верон',
-    'Мирабелла',
-    'Вальц',
-    'Онопко',
-    'Топольницкая',
-    'Нионго',
-    'Ирвинг'
-  ];
-
   var coatColorArray = [
     'rgb(101, 137, 164)',
     'rgb(241, 43, 107)',
@@ -185,10 +163,10 @@
     inputFireball.value = randomColor;
   });
 
-// Отправка формы
+  // Отправка формы
   var form = document.querySelector('.setup-wizard-form');
   form.addEventListener('submit', function (evt) {
-    window.backend.save(new FormData(form), function (response) {
+    window.backend.save(new FormData(form), function () {
       setup.classList.add('hidden');
     }, errorHandler);
     evt.preventDefault();
